@@ -1,11 +1,11 @@
 package projet;
 
-public class ZeroClass extends SocialClass {
+public class ZeroClass implements SocialClass {
 	
 	 private double fraction ;
 	    
 	    public ZeroClass() {
-	    	super("Zero");
+	    	
 	    	this.fraction = 0;
 	    }
 	    

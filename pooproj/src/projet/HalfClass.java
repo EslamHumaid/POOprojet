@@ -1,10 +1,10 @@
 package projet;
 
-public class HalfClass extends SocialClass {
+public class HalfClass implements SocialClass {
 	   private double fraction ;
 	    
 	    public HalfClass() {
-	    	super("Half");
+	    	
 	    	this.fraction = 0.5;
 	    }
 	    

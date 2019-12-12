@@ -1,13 +1,8 @@
 package projet;
 
-public abstract class SocialClass {
-	private String nameClass;
+public interface SocialClass {
 	
-	public SocialClass(String name) {
-		this.nameClass = name;
-	}
+	public double getFraction();
 	
-	public abstract double getFraction();
-	public String getNameClass() { return this.nameClass;}
 	
 }

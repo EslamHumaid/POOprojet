@@ -1,10 +1,10 @@
 package projet;
 
-public class NormalClass extends SocialClass {
+public class NormalClass implements SocialClass {
     private double fraction ;
     
     public NormalClass() {
-    	super("Normal");
+    	
     	this.fraction = 1;
     }
     
