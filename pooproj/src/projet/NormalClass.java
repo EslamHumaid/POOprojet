@@ -1,7 +1,7 @@
 package projet;
 
 public class NormalClass implements SocialClass {
-    private double fraction ;
+    private final double fraction ;
     
     public NormalClass() {
     	

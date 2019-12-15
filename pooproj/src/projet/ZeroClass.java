@@ -2,7 +2,7 @@ package projet;
 
 public class ZeroClass implements SocialClass {
 	
-	 private double fraction ;
+	 private final double fraction ;
 	    
 	    public ZeroClass() {
 	    	

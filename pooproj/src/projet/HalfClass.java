@@ -1,7 +1,7 @@
 package projet;
 
 public class HalfClass implements SocialClass {
-	   private double fraction ;
+	   private final double fraction ;
 	    
 	    public HalfClass() {
 	    	

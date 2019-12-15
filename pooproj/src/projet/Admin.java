@@ -15,6 +15,7 @@ public class Admin extends Member {
 	
 	public void creatNetwork(String name) {
 		this.network = new Network(this, name);
+		this.network.addMember(this);
 	}
 	
 	public void addMember(Member toAdd) {
@@ -35,54 +36,61 @@ public class Admin extends Member {
 	
 	
 	//returns the list of members with the service of the task
-	public ArrayList<Member> membersWithService(Task task) {
+	public ArrayList<Member> membersWithService(Task task) throws NetworkException  {
 		
+		if(network.getMembersList().isEmpty()) {
+			throw new NetworkException("there are no members in this network");
+		}else {
 		
-		
-		String wantedService = task.getService().getNameService();
-		
-		ArrayList<Member> membersWithService = new ArrayList<Member>();
-		
-		boolean serviceFound;
-		for(Member member : this.network.getMembersList()) {
-			serviceFound = false;
+		    String wantedService = task.getService().getNameService();
 			
-			for(Service serv : member.getServices()) {
-				if(serv.getNameService() == wantedService) {
-					serviceFound = true;
+			ArrayList<Member> membersWithService = new ArrayList<Member>();
+			
+			boolean serviceFound;
+			for(Member member : this.network.getMembersList()) {
+				serviceFound = false;
+				
+				for(Service serv : member.getServices()) {
+					if(serv.getNameService() == wantedService) {
+						serviceFound = true;
+					}
 				}
+				
+							
+				if(serviceFound) {
+					membersWithService.add(member);
+				}
+				
 			}
+		
+		
 			
-						
-			if(serviceFound) {
-				membersWithService.add(member);
-			}
-			
+		
+			return membersWithService;
 		}
-		
-			
-		
-		return membersWithService;
 	}
 	
 	
 	
-	public void TaskPayment(Task task) {
-		double dividend = task.calculeCost() / task.getNbParticipants();
-		
-		for(Member member : task.getParticipantsList()) {
-			member.setWallet(member.getWallet() + dividend); 
+	public void TaskPayment(Task task) throws NetworkException {
+		if(!this.isAValidTask(task)) {
+			throw new NetworkException("task is not valid");
+		}else {
+			double dividend = task.calculeCost() / task.getNbParticipants();
+			
+			for(Member member : task.getParticipantsList()) {
+				member.setWallet(member.getWallet() + dividend); 
+			}
+			
+			task.getBeneficiary().setWallet(task.getBeneficiary().getWallet() - (task.calculeCost()*(task.getBeneficiary().getSocialClass().getFraction())));
 		}
-		
-		task.getBeneficiary().setWallet(task.getBeneficiary().getWallet() - (task.calculeCost()*(task.getBeneficiary().getSocialClass().getFraction())));
-		
 	}
 	
 	
-	public boolean chooseMembers(Task task) {
+	public void chooseMembers(Task task) throws NetworkException {
 		
 		if(!this.isAValidTask(task)) {
-			return false;
+			throw new NetworkException("task is not valid");
 		}else {
 			ArrayList<Member> membersWithService = this.membersWithService(task);
 			
@@ -117,7 +125,7 @@ public class Admin extends Member {
 				
 			}
 			
-			return true;
+			
 			
 		}
 		
@@ -127,12 +135,13 @@ public class Admin extends Member {
 	
 	
 	
-	public boolean isAValidTask(Task task) {
+	public boolean isAValidTask(Task task) throws NetworkException {
 		
 
 		if(task.getBeneficiary().getWallet() < task.calculeCost()*task.getBeneficiary().getSocialClass().getFraction()) {
 			return false;
 		}else {
+			
 			return (task.getNbParticipants() <= membersWithService(task).size());
 			
 		}
