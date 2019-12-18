@@ -1,3 +1,10 @@
+/*
+ * POO Projet L2 2019
+ *@author HUMAID Eslam, BAGHAWITAH Ahmed Groupe 384J 
+ * 
+ * @date 18/12/2019
+ * 
+*/
 package projet;
 
 public class test {
@@ -142,19 +149,19 @@ public class test {
 	  System.out.println("creating tasks... ");
 	  Task task1 = new Task(serv2 , maxime, 1.5 , false, 3) ;
 	  System.out.println("task1 :- \n beneficiary :maxime " + "\n service : bodyguard " + "\n duration : 1 hour and a half " + " \n task is not voluntary" + "\n task needs 3 members");
-	  System.out.println("task1 cost =  " + task1.calculeCost());
+	  System.out.println(" task1 cost =  " + task1.calculeCost());
 	  System.out.println("");	  
 	  Task taskV = new Task(serv2 , charly, 2 , true, 2) ;
 	  System.out.println("taskV :- \n beneficiary :charly " + "\n service : bodyguard " + "\n duration : 2 hours " + " \n task is voluntary" + "\n task needs 2 members");
-	  System.out.println("taskV cost =  " + taskV.calculeCost());
+	  System.out.println(" taskV cost =  " + taskV.calculeCost());
 	  System.out.println("");
 	  Task task2 = new Task(serv3 , lea, 1.2 , false, 2) ;
 	  System.out.println("task2 :- \n beneficiary :lea " + "\n service : cleaning " + "\n duration : 1 hour and 20min " + " \n task is not voluntary" + "\n task needs 1 member");
-	  System.out.println("task2 cost =  " + task2.calculeCost());
+	  System.out.println(" task2 cost =  " + task2.calculeCost());
 	  System.out.println("");
 	  Task task3 = new Task(serv4 , lea, 3 , false, 2) ;
 	  System.out.println("task3 :- \n beneficiary :lea " + "\n service : programming " + "\n duration : 3 hours " + " \n task is not voluntary" + "\n task needs 2 members");
-	  System.out.println("task3 cost =  " + task3.calculeCost());
+	  System.out.println(" task3 cost =  " + task3.calculeCost());
 	  System.out.println("");
 	  System.out.println("");
 	  

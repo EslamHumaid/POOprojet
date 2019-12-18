@@ -1,3 +1,10 @@
+/*
+ * POO Projet L2 2019
+ *@author HUMAID Eslam, BAGHAWITAH Ahmed Groupe 384J 
+ * 
+ * @date 18/12/2019
+ * 
+*/
 package projet;
 
 import java.util.ArrayList;
@@ -29,7 +36,7 @@ public class Task {
     public void addParticipants(Member addedMember) { this.participants.add(addedMember);} //only used by admin
     public ArrayList<Member> getParticipantsList(){ return this.participants;}
     
-    public double calculeCost() {         //calculeCost is independent from socialClass of the beneficiary
+    public double calculeCost() {         
     	if(this.isVoluntary) { 
     		return 0;
     	}else {

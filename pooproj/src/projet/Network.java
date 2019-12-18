@@ -1,10 +1,15 @@
+/*
+ * POO Projet L2 2019
+ *@author HUMAID Eslam, BAGHAWITAH Ahmed Groupe 384J 
+ * 
+ * @date 18/12/2019
+ * 
+ * Precondition : having identical members ( members with the same name ) is not possible
+*/
 package projet;
 
 import java.util.ArrayList;
-/*
-    Precondition : having identical members ( members with the same name ) is not possible
 
-*/
 public class Network {
 	private ArrayList<Member> membersList;
 	private Admin admin;
